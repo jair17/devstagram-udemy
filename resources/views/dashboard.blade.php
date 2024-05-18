@@ -28,9 +28,9 @@
                         @endif
                     @endauth
                 </div>
-                <p class="text-gray-800 text-sm mb-3 font-bold">{{$user->followers->count()}}<span class="font-normal"> @choice(__('follower|followers'),$user->followers->count())</span>
+                <p class="text-gray-800 text-sm mb-3 font-bold">{{$user->followers->count() ?? 0}}<span class="font-normal"> @choice(__('follower|followers'),$user->followers->count())</span>
                 </p>
-                <p class="text-gray-800 text-sm mb-3 font-bold">{{$user->followings->count()}}<span class="font-normal"> {{__('following')}} </span>
+                <p class="text-gray-800 text-sm mb-3 font-bold">{{$user->followings->count() ?? 0}}<span class="font-normal"> {{__('following')}} </span>
                 </p>
                 <p class="text-gray-800 text-sm mb-3 font-bold">{{$user->posts->count()}}<span
                         class="font-normal"> {{__('post')}} </span></p>
