@@ -3,6 +3,9 @@
 namespace App\Livewire;
 
 use App\Models\Post;
+use App\Notifications\CommentNotification;
+use App\Notifications\LikeNotification;
+use Illuminate\Support\Facades\Notification;
 use Livewire\Component;
 
 class LikePost extends Component
@@ -16,7 +19,6 @@ class LikePost extends Component
         $this->likes = $post->likes->count();
     }
 
-
     public function like(){
         if($this->post->checkLike(auth()->user())){
             $this->post->likes()->where('post_id',$this->post->id)->delete();
@@ -28,6 +30,8 @@ class LikePost extends Component
             ]);
             $this->isLiked = true;
             $this->likes++;
+
+            Notification::send($this->post->user, new LikeNotification($this->post));
         }
 
         return back();

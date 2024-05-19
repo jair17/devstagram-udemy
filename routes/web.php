@@ -40,8 +40,6 @@ Route::get('/{user:username}', [PostController::class, 'index'])->name('posts.in
 Route::get('/posts/create', [PostController::class, 'create'])->name('posts.create');
 Route::post('/posts/store', [PostController::class, 'store'])->name('posts.store');
 Route::get('/{user:username}/posts/{post:title}', [PostController::class, 'show'])->name('posts.show');
-Route::post('/posts/{post}/likes', [LikeController::class, 'store'])->name('posts.likes.store');
-Route::delete('/posts/{post}/likes', [LikeController::class, 'destroy'])->name('posts.likes.destroy');
 Route::delete('/posts/{post}', [PostController::class, 'destroy'])->name('posts.destroy');
 
 Route::post('{user:username}/posts/{post:title}', [CommentController::class, 'store'])->name('comments.store');

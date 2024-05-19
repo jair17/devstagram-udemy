@@ -31,12 +31,6 @@ class PostController extends Controller
             'image' => 'required'
         ]);
 
-//        Post::create([
-//            'title' => $request->input('title'),
-//            'description' => $request->input('description'),
-//            'image' => $request->input('image'),
-//            'user_id' => auth()->user()->id
-//        ]);
         $request->user()->posts()->create([
             'title' => $request->input('title'),
             'description' => $request->input('description'),
